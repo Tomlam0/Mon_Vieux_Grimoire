@@ -10,6 +10,9 @@ coverage
 # production
 build
 
+# security
+.env
+
 # misc
 .DS_Store
 .env.local
