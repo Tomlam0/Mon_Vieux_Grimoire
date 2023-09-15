@@ -7,17 +7,6 @@ require("dotenv").config();
 
 // Gère la création de compte utilisateur
 exports.signup = (req, res, next) => {
-    // Vérification des règles courantes du mot de passe
-    const passwordRules =
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#]).{8,}$/;
-
-    if (!passwordRules.test(req.body.password)) {
-        return res.status(400).json({
-            message:
-                "Le mot de passe doit contenir au moins 8 caractères, dont une majuscule, une minuscule, un chiffre et un caractère spécial.",
-        });
-    }
-
     // Hashage du mot de passe
     bcrypt
         .hash(req.body.password, 10)

@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 
 const path = require("path");
-const handleCors = require("./middlewares/handleCors");
+const handleCors = require("./middlewares/handle-cors");
 
 const bookRoutes = require("./routes/book");
 const userRoutes = require("./routes/user");
