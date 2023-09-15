@@ -4,6 +4,9 @@ const mongoose = require("mongoose");
 const path = require("path");
 const handleCors = require("./middlewares/handleCors");
 
+const bookRoutes = require("./routes/book");
+const userRoutes = require("./routes/user");
+
 const app = express();
 
 require("dotenv").config();
@@ -22,8 +25,8 @@ app.use(express.json());
 app.use(handleCors);
 
 // Routes
-// app.use("/api/books", bookRoutes);
-// app.use("/api/auth", userRoutes);
+app.use("/api/books", bookRoutes);
+app.use("/api/auth", userRoutes);
 app.use("/images", express.static(path.join(__dirname, "images")));
 
 module.exports = app;
