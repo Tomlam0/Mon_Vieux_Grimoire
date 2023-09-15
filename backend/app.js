@@ -2,7 +2,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 
 const path = require("path");
+
 const handleCors = require("./middlewares/handle-cors");
+const handleError = require("./middlewares/handle-error");
 
 const bookRoutes = require("./routes/book");
 const userRoutes = require("./routes/user");
@@ -28,5 +30,8 @@ app.use(handleCors);
 app.use("/api/books", bookRoutes);
 app.use("/api/auth", userRoutes);
 app.use("/images", express.static(path.join(__dirname, "images")));
+
+// Middleware pour gérer les erreurs globales
+app.use(handleError);
 
 module.exports = app;
