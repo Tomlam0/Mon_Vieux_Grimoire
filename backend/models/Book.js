@@ -5,7 +5,6 @@ const bookSchema = mongoose.Schema({
     userId: {
         type: String,
         required: true,
-        unique: true,
     },
     title: {
         type: String,
@@ -27,16 +26,17 @@ const bookSchema = mongoose.Schema({
         type: String,
         required: true,
     },
-    rating: [
+    ratings: [
         {
             userId: {
                 type: String,
                 required: true,
-                unique: true,
             },
             grade: {
                 type: Number,
                 required: true,
+                min: 1,
+                max: 5,
             },
         },
     ],

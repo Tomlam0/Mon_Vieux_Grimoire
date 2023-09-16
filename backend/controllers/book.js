@@ -1,5 +1,4 @@
 const sharp = require("sharp");
-
 const Book = require("../models/Book");
 
 /**
@@ -16,6 +15,7 @@ exports.getBestBook = (req, res, next) => {};
  */
 exports.createBook = (req, res, next) => {
     const bookObject = JSON.parse(req.body.book);
+    // Anticipation d'une eventuelle requête malveillante
     delete bookObject._id;
     delete bookObject._userId;
 
@@ -27,9 +27,8 @@ exports.createBook = (req, res, next) => {
         imageUrl: `${req.protocol}://${req.get("host")}/images/${
             req.file.filename
         }`,
-        // averageRating: [0],
+        averageRating: 0,
     });
-
     book.save()
         .then(() => res.status(201).json({ message: "Livre ajouté !" }))
         .catch((error) => res.status(400).json({ error }));
