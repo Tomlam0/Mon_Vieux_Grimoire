@@ -1,3 +1,4 @@
+const fs = require("fs");
 const sharp = require("sharp");
 const Book = require("../models/Book");
 
@@ -31,7 +32,13 @@ exports.createBook = (req, res, next) => {
     });
     book.save()
         .then(() => res.status(201).json({ message: "Livre ajouté !" }))
-        .catch((error) => res.status(400).json({ error }));
+        // En cas d'erreur, supprimer l'image qui est stockée par multer dans le dossier images
+        .catch((error) => {
+            fs.unlink(req.file.path, (error) => {
+                req.file.path = `${req.file.path.split(".")[0]}.webp`;
+            });
+            res.status(400).json({ error });
+        });
 };
 
 exports.rateBook = (req, res, next) => {};

@@ -8,6 +8,7 @@ const MIME_TYPES = {
     "image/webp": "webp",
 };
 
+// Stock les images uploadées dans le dossier racine images et modifie leurs noms
 const storage = multer.diskStorage({
     destination: (req, res, callback) => {
         callback(null, "images");
