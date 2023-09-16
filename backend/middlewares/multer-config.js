@@ -20,5 +20,4 @@ const storage = multer.diskStorage({
     },
 });
 
-// le name de l'input côté frontend est "file"
-module.exports = multer({ storage }).single("file");
+module.exports = multer({ storage }).single("image");

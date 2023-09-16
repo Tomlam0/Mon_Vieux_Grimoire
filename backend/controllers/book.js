@@ -15,7 +15,7 @@ exports.getBestBook = (req, res, next) => {};
  * POST
  */
 exports.createBook = (req, res, next) => {
-    const bookObject = JSON.parse(req.body.thing);
+    const bookObject = JSON.parse(req.body.book);
     delete bookObject._id;
     delete bookObject._userId;
 
@@ -27,7 +27,7 @@ exports.createBook = (req, res, next) => {
         imageUrl: `${req.protocol}://${req.get("host")}/images/${
             req.file.filename
         }`,
-        averageRating: [0],
+        // averageRating: [0],
     });
 
     book.save()
