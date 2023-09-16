@@ -26,6 +26,7 @@ mongoose
 // Configure la sécurité des headers HTTP
 app.use(helmet());
 
+// Pour permettre les "req.body"
 app.use(express.json());
 
 // Middleware pour gérer les erreurs CORS
