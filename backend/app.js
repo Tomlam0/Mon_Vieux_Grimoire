@@ -24,7 +24,7 @@ mongoose
     .catch(() => console.log("Connexion à MongoDB échouée !"));
 
 // Configure la sécurité des headers HTTP
-app.use(helmet());
+app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 
 // Pour permettre les "req.body"
 app.use(express.json());

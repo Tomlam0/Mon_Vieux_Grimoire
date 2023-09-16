@@ -5,9 +5,25 @@ const Book = require("../models/Book");
 /**
  * GET
  */
-exports.getAllBooks = (req, res, next) => {};
+exports.getAllBooks = (req, res, next) => {
+    Book.find()
+        .then((books) => {
+            res.status(200).json(books);
+        })
+        .catch((error) => {
+            res.status(400).json({ error });
+        });
+};
 
-exports.getOneBook = (req, res, next) => {};
+exports.getOneBook = (req, res, next) => {
+    Book.findOne({ _id: req.params.id })
+        .then((books) => {
+            res.status(200).json(books);
+        })
+        .catch((error) => {
+            res.status(400).json({ error });
+        });
+};
 
 exports.getBestBook = (req, res, next) => {};
 
@@ -26,8 +42,8 @@ exports.createBook = (req, res, next) => {
         userId: req.auth.userId,
         // // Construction de l'URL de l'image téléchargée.
         imageUrl: `${req.protocol}://${req.get("host")}/images/${
-            req.file.filename
-        }`,
+            req.file.filename.split(".")[0]
+        }.webp`,
         averageRating: 0,
     });
     book.save()

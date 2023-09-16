@@ -6,7 +6,7 @@ module.exports = async (req, res, next) => {
 
     try {
         await sharp(req.file.path)
-            .resize(206, 260, { fit: sharp.fit.inside })
+            .resize(310, 390, { fit: sharp.fit.inside })
             .webp({ quality: 80 })
             .toFile(`${req.file.path.split(".")[0]}.webp`);
 
