@@ -15,6 +15,7 @@ exports.getBestBook = (req, res, next) => {};
  * POST
  */
 exports.createBook = (req, res, next) => {
+    const bookObject = JSON.parse(req.body.thing);
     delete bookObject._id;
     delete bookObject._userId;
 
