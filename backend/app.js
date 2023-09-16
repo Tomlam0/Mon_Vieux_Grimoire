@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const helmet = require("helmet");
 
 const path = require("path");
 
@@ -22,7 +23,11 @@ mongoose
     .then(() => console.log("Connexion à MongoDB réussi !"))
     .catch(() => console.log("Connexion à MongoDB échouée !"));
 
+// Configure la sécurité des headers HTTP
+app.use(helmet());
+
 app.use(express.json());
+
 // Middleware pour gérer les erreurs CORS
 app.use(handleCors);
 
