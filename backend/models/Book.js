@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const uniqueValidator = require("mongoose-unique-validator");
 
 const bookSchema = mongoose.Schema({
     userId: {
@@ -45,8 +44,5 @@ const bookSchema = mongoose.Schema({
         required: true,
     },
 });
-
-// Facilite la gestion des erreurs d'unicité de l'userId
-bookSchema.plugin(uniqueValidator);
 
 module.exports = mongoose.model("Book", bookSchema);

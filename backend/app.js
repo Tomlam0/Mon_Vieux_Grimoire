@@ -21,7 +21,7 @@ mongoose
         useUnifiedTopology: true,
     })
     .then(() => console.log("Connexion à MongoDB réussi !"))
-    .catch(() => console.log("Connexion à MongoDB échouée !"));
+    .catch((error) => console.log("Connexion à MongoDB échouée !", error));
 
 // Configure la sécurité des headers HTTP
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));

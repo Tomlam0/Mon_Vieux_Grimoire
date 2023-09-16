@@ -1,6 +1,8 @@
 const http = require("http");
 const app = require("./app");
 
+require("dotenv").config();
+
 // Assure une forme valide au port
 const normalizePort = (val) => {
     const port = parseInt(val, 10);
@@ -24,7 +26,7 @@ const errorHandler = (error) => {
     if (error.syscall != "listen") {
         throw error;
     }
-    console.log(address);
+
     const address = server.address();
 
     const bind =
