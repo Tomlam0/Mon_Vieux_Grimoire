@@ -6,7 +6,31 @@ const Book = require("../models/Book");
 /**
  * POST
  */
-exports.rateBook = (req, res, next) => {};
+exports.rateBook = (req, res, next) => {
+    const user = req.body.userId;
+
+    const newRating = {
+        userId: req.body.userId,
+        grade: req.body.rating,
+        _id: req.body._id,
+    };
+
+    // sécurité d'utilisateur malveillant
+    if (user !== req.auth.userId) {
+        res.status(401).json({ message: "Non autorisé" });
+    } else {
+        Book.findOne({ _id: req.params.id })
+            .then((book) => {
+                // par sécurité à nouveau
+                if (book.ratings.find((rating) => rating.userId === user)) {
+                    res.status(401).json({ message: "Livre déjà noté" });
+                } else {
+                    // En cours
+                }
+            })
+            .catch((error) => res.status(400).json({ error }));
+    }
+};
 
 exports.createBook = (req, res, next) => {
     const bookObject = JSON.parse(req.body.book);
