@@ -12,24 +12,35 @@ exports.rateBook = (req, res, next) => {
     const newRating = {
         userId: req.body.userId,
         grade: req.body.rating,
-        _id: req.body._id,
     };
 
     // sécurité d'utilisateur malveillant
     if (user !== req.auth.userId) {
-        res.status(401).json({ message: "Non autorisé" });
-    } else {
-        Book.findOne({ _id: req.params.id })
-            .then((book) => {
-                // par sécurité à nouveau
-                if (book.ratings.find((rating) => rating.userId === user)) {
-                    res.status(401).json({ message: "Livre déjà noté" });
-                } else {
-                    // En cours
-                }
-            })
-            .catch((error) => res.status(400).json({ error }));
+        return res.status(401).json({ message: "Non autorisé" });
     }
+
+    Book.findOne({ _id: req.params.id })
+        .then((book) => {
+            // par sécurité à nouveau
+            if (book.ratings.find((rating) => rating.userId === user)) {
+                return res.status(401).json({ message: "Livre déjà noté" });
+            }
+            book.ratings.push(newRating);
+
+            // Mettre à jour la note moyenne
+            const totalRatings = book.ratings.reduce(
+                (acc, curr) => acc + curr.grade,
+                0
+            );
+            book.averageRating =
+                Math.round((totalRatings / book.ratings.length) * 10) / 10;
+
+            return book
+                .save()
+                .then((updatedBook) => res.status(200).json(updatedBook))
+                .catch((error) => res.status(400).json({ error }));
+        })
+        .catch((error) => res.status(400).json({ error }));
 };
 
 exports.createBook = (req, res, next) => {
