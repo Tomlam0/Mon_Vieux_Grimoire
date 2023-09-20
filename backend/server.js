@@ -1,7 +1,7 @@
 const http = require("http");
 const app = require("./app");
 
-require("dotenv").config();
+const appConfig = require("./configs/appConfig");
 
 // Assure une forme valide au port
 const normalizePort = (val) => {
@@ -17,7 +17,7 @@ const normalizePort = (val) => {
     return false;
 };
 
-const port = normalizePort(process.env.PORT || "4001");
+const port = normalizePort(appConfig.port || "4001");
 
 app.set("port", port);
 

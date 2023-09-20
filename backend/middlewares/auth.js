@@ -1,13 +1,13 @@
 const jwt = require("jsonwebtoken");
 
-require("dotenv").config();
+const authConfig = require("../configs/authConfig");
 
 // Utilisé pour vérifier l'authenticité du token JWT.
 module.exports = (req, res, next) => {
     try {
         const token = req.headers.authorization.split(" ")[1];
 
-        const decodedToken = jwt.verify(token, process.env.JWT_SECRET_KEY);
+        const decodedToken = jwt.verify(token, authConfig.jwtSecret);
 
         // Extrait de l'userId du payload
         const userId = decodedToken.userId;

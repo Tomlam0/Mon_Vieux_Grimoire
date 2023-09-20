@@ -1,8 +1,12 @@
+require("dotenv").config();
+
 const express = require("express");
 const mongoose = require("mongoose");
 const helmet = require("helmet");
 
 const path = require("path");
+
+const dbConfig = require("./configs/dbConfig");
 
 const handleCors = require("./middlewares/handle-cors");
 const handleError = require("./middlewares/handle-error");
@@ -12,11 +16,9 @@ const userRoutes = require("./routes/user");
 
 const app = express();
 
-require("dotenv").config();
-
 // Connexion Database
 mongoose
-    .connect(process.env.MONGO_URI, {
+    .connect(dbConfig.mongoUri, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
     })
