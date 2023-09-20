@@ -3,8 +3,6 @@ const jwt = require("jsonwebtoken");
 
 const User = require("../models/User");
 
-require("dotenv").config();
-
 // Gère la création de compte utilisateur
 exports.signup = (req, res, next) => {
     // Hashage du mot de passe
