@@ -15,7 +15,7 @@ exports.rateBook = (req, res, next) => {
 
     // sécurité d'utilisateur malveillant
     if (user !== req.auth.userId) {
-        return res.status(401).json({ message: "Non autorisé" });
+        return res.status(403).json({ message: "Non autorisé" });
     }
 
     Book.findOne({ _id: req.params.id })

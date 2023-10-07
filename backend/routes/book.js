@@ -14,7 +14,7 @@ router.get("/bestrating", bookCtrl.getBestBook);
 router.get("/:id", bookCtrl.getOneBook);
 router.get("/", bookCtrl.getAllBooks);
 
-router.put("/:id", auth, multer, bookCtrl.updateBook);
+router.put("/:id", auth, multer, sharp, bookCtrl.updateBook);
 
 router.delete("/:id", auth, bookCtrl.deleteBook);
 

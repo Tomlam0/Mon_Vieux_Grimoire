@@ -13,7 +13,7 @@ exports.deleteBook = (req, res, next) => {
                     .status(403)
                     .json({ message: "Utilisateur non autorisé" });
             }
-            const filename = book.imageUrl.split("/images/")[1];
+            const filename = book.imageUrl.split("/").pop();
 
             Book.deleteOne({ _id: req.params.id })
                 .then(() => {

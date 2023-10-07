@@ -1,3 +1,5 @@
+const fs = require("fs");
+
 const Book = require("../../models/Book");
 
 /**
@@ -21,10 +23,27 @@ exports.updateBook = (req, res, next) => {
             if (book.userId != req.auth.userId) {
                 res.status(403).json({ message: "Utilisateur non autorisé" });
             } else {
+                // Extrait le nom de l'image actuellement stockée
+                const oldPicture = book.imageUrl.split("/").pop();
+
                 Book.updateOne({ _id: req.params.id }, { ...bookObject })
-                    .then(() =>
-                        res.status(200).json({ message: "Livre modifié" })
-                    )
+
+                    .then(() => {
+                        // Pour supprimer l'ancienne image du dossier si une nouvelle image est détectée
+                        if (req.file) {
+                            fs.unlink(`images/${oldPicture}`, (err) => {
+                                if (err) {
+                                    res.status(500).json({ error: err });
+                                } else {
+                                    res.status(200).json({
+                                        message: "Livre modifié",
+                                    });
+                                }
+                            });
+                        } else {
+                            res.status(200).json({ message: "Livre modifié" });
+                        }
+                    })
                     .catch((error) => res.status(400).json({ error }));
             }
         })
