@@ -44,6 +44,13 @@ exports.rateBook = (req, res, next) => {
 
 // ################################
 exports.createBook = (req, res, next) => {
+    // Vérification de la présence de l'image par sécurité
+    if (!req.file) {
+        return res
+            .status(400)
+            .json({ message: "L'ajout d'une image est obligatoire" });
+    }
+
     const bookObject = JSON.parse(req.body.book);
     // Anticipation d'une eventuelle requête malveillante
     delete bookObject._id;
