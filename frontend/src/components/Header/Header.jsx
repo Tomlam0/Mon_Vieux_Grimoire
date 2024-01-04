@@ -3,7 +3,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 
 import * as PropTypes from 'prop-types';
 import styles from './Header.module.css';
-import Logo from '../../images/Logo.png';
+import Logo from '../../images/Logo.svg';
 
 function Header({ user, setUser }) {
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ function Header({ user, setUser }) {
   return (
     <header className={styles.Header}>
       <div className="container">
-        <img src={Logo} alt="logo mpm vieu grimoire" />
+        <img src={Logo} alt="logo mpm vieu grimoire" className={styles.logo}/>
         <ul>
           <li><NavLink to="/" end className={({ isActive }) => (isActive ? styles.activeLink : undefined)}>Accueil</NavLink></li>
           <li><NavLink to="/Ajouter" className={({ isActive }) => (isActive ? styles.activeLink : undefined)}>Ajouter un livre</NavLink></li>

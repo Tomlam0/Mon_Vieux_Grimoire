@@ -28,7 +28,6 @@ function Home() {
       <main className={styles.main}>
         <header className={styles.head}>
           <h1>Nos Livres</h1>
-          <p>à lire et à relire</p>
           <Link to="/Ajouter" className="button">+ Ajouter un livre</Link>
         </header>
         <section className={styles.bookList}>

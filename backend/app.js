@@ -25,6 +25,15 @@ mongoose
     .then(() => console.log("Connexion à MongoDB réussi !"))
     .catch((error) => console.log("Connexion à MongoDB échouée !", error));
 
+// Ping DB mensuellement pour éviter la MongoDB Atlas de bloquer le cluster après 3 mois d'inactivité
+function keepDbAwake() {
+    mongoose.connection.db
+        .admin()
+        .ping()
+        .then(() => console.log("Ping réussi"));
+}
+setInterval(keepDbAwake, 2147483646 ); // 1 mois en millisecondes
+
 // Configure la sécurité des headers HTTP
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 

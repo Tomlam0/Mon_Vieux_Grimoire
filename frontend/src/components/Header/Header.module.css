@@ -1,6 +1,6 @@
-.Header{
-    font-family: 'Libre Baskerville', serif;
-    background-color: #FFFFFF;
+.Header {
+    font-family: "Libre Baskerville", serif;
+    background-color: #ffffff;
     min-height: 91px;
     display: flex;
     align-items: center;
@@ -9,6 +9,11 @@
 .Header div {
     display: flex;
     justify-content: space-between;
+}
+
+.logo {
+    width: 250px;
+    margin-left: 20px;
 }
 
 .Header p {
@@ -24,9 +29,14 @@
     list-style-type: none;
 }
 
+.Header ul li :hover {
+    color: #d9a963;
+    transition: color 0.3s ease-in-out;
+}
+
 .Header ul li a {
     text-decoration: none;
-    color: black ;
+    color: black;
 }
 
 .Header a.activeLink {
@@ -37,14 +47,20 @@
     .Header div {
         flex-direction: column;
         align-items: center;
+        gap: 20px;
     }
 
     .Header img {
         margin-top: 20px;
         width: 50%;
+        padding-left: 20px;
     }
 
     .Header ul li {
         padding-block: 20px;
+    }
+
+    .logo {
+        margin-left: 0px;
     }
 }
