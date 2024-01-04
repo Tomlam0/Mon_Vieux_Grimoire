@@ -9,6 +9,7 @@
 .Header div {
     display: flex;
     justify-content: space-between;
+    gap: 20px;
 }
 
 .logo {
@@ -22,11 +23,13 @@
 
 .Header ul {
     display: flex;
+    margin-right: 20px;
 }
 
 .Header ul li {
     padding-inline: 20px;
     list-style-type: none;
+    font-size: 14px;
 }
 
 .Header ul li :hover {
@@ -62,5 +65,8 @@
 
     .logo {
         margin-left: 0px;
+    }
+    .Header ul {
+        margin-right: 0px;
     }
 }

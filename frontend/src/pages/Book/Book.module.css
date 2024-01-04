@@ -2,38 +2,35 @@
     padding-block: 5em;
     display: flex;
     align-items: stretch;
-
 }
 .BookContainer {
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     margin: auto;
     border-radius: 7px;
-    box-shadow:  0 4px 34px rgba(0, 0, 0, 0.07);
+    box-shadow: 0 4px 34px rgba(0, 0, 0, 0.07);
     box-sizing: border-box;
 }
 
 .BookContainer hr {
     width: 60%;
     border-color: transparent;
-    background-color: #F2E3CE;
+    background-color: #f2e3ce;
     height: 1px;
 }
 .Deleted {
     font-family: "Libre Baskerville", serif;
     padding-block: 5em;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     margin: auto;
     border-radius: 7px;
-    box-shadow:  0 4px 34px rgba(0, 0, 0, 0.07);
+    box-shadow: 0 4px 34px rgba(0, 0, 0, 0.07);
     box-sizing: border-box;
     display: flex;
     align-items: center;
     flex-direction: column;
-
 }
 
 .Deleted h1 {
-
     font-size: 44px;
     font-style: italic;
     color: #796157;
@@ -58,6 +55,7 @@
     width: 40%;
     padding-right: 80px;
     padding-left: 120px;
+    
 }
 .BookContent {
     width: 60%;
@@ -65,9 +63,6 @@
     flex-direction: column;
 }
 
-.Owner {
-
-}
 .BookInfo {
     display: grid;
     width: 100%;
@@ -95,7 +90,9 @@
     padding-left: 20px;
 }
 
-.PublishDate, .Genre, .Rating {
+.PublishDate,
+.Genre,
+.Rating {
     justify-content: center;
 }
 
@@ -110,13 +107,13 @@
 .Book form {
     position: relative;
     overflow: hidden;
-    background-color: #F9F3EE;
+    background-color: #f9f3ee;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding-block: 32px;
     margin-top: 50px;
-    max-width: 465px
+    max-width: 465px;
 }
 
 .Book form p {
@@ -127,21 +124,22 @@
 
 .Book form input[type="radio"] {
     position: absolute;
-    left: -10000px
+    left: -10000px;
 }
 .Book form input[type="submit"] {
     padding: 20px 23px;
     border: none;
-    background-color: #D9A963;
-    font-family: 'DM Sans', sans-serif;
+    background-color: #d9a963;
+    font-family: "DM Sans", sans-serif;
     font-size: 16px;
 }
-.Stars, .Stars label{
+.Stars,
+.Stars label {
     display: flex;
     margin-bottom: 22px;
 }
 .Owner {
-    color: #2C1810;
+    color: #2c1810;
     font-family: "DM Sans", sans-serif;
     padding: 20px;
 }
@@ -156,7 +154,7 @@
 }
 
 .Owner span {
-    color: #D70000;
+    color: #d70000;
     cursor: pointer;
     text-decoration: underline;
 }
@@ -177,12 +175,10 @@
         align-items: center;
         margin-top: 2em;
     }
-
 }
 
 @media all and (max-width: 600px) {
     .BookContent {
         width: 90%;
     }
-
 }

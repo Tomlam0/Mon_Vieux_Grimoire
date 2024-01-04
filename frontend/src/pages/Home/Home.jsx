@@ -21,7 +21,9 @@ function Home() {
     }
     getBooksList();
   }, []);
+
   const backgroundImageStyle = { backgroundImage: `url(${Banner})` };
+  
   return (
     <div className={styles.Home}>
       <div className={styles.banner} style={backgroundImageStyle} />
