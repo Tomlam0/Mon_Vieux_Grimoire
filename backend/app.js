@@ -16,7 +16,6 @@ const userRoutes = require("./routes/user");
 
 const app = express();
 
-// Connexion Database
 mongoose
     .connect(dbConfig.mongoUri, {
         useNewUrlParser: true,
@@ -43,12 +42,10 @@ app.use(express.json());
 // Middleware pour gérer les erreurs CORS
 app.use(handleCors);
 
-// Routes
 app.use("/api/books", bookRoutes);
 app.use("/api/auth", userRoutes);
 app.use("/images", express.static(path.join(__dirname, "images")));
 
-// Middleware pour gérer les erreurs globales
 app.use(handleError);
 
 module.exports = app;

@@ -3,7 +3,6 @@ const app = require("./app");
 
 const appConfig = require("./configs/appConfig");
 
-// Assure une forme valide au port
 const normalizePort = (val) => {
     const port = parseInt(val, 10);
 
@@ -17,11 +16,10 @@ const normalizePort = (val) => {
     return false;
 };
 
-const port = normalizePort(appConfig.port || "4001");
+const port = normalizePort(appConfig.port || "4000");
 
 app.set("port", port);
 
-// Fonction pour gérer les erreurs liées à la mise en place du serveur
 const errorHandler = (error) => {
     if (error.syscall != "listen") {
         throw error;
@@ -48,7 +46,6 @@ const errorHandler = (error) => {
 
 const server = http.createServer(app);
 
-// Attache du gestionnaire d'erreur au server
 server.on("error", errorHandler);
 
 // Affiche un message lorsque le serveur commence à écouter sur un port
