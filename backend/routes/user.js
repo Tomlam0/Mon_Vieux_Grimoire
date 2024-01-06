@@ -7,13 +7,14 @@ const passwordValidator = require("../middlewares/password-validator");
 
 const userCtrl = require("../controllers/user");
 
-router.post(
-    "/signup",
-    rateLimit,
-    emailValidator,
-    passwordValidator,
-    userCtrl.signup
-);
+// router.post(
+//     "/signup",
+//     rateLimit,
+//     emailValidator,
+//     passwordValidator,
+//     userCtrl.signup
+// );
+
 router.post("/login", rateLimit, userCtrl.login);
 
 module.exports = router;
