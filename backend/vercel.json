@@ -11,5 +11,11 @@
             "src": "/.*",
             "dest": "server.js"
         }
+    ],
+    "crons": [
+        {
+            "path": "/api/ping-db",
+            "schedule": "0 10 * * 0"
+        }
     ]
 }
