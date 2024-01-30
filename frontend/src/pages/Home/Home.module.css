@@ -1,6 +1,6 @@
 .Home {
- position: relative;padding-top: 131px;
-
+    position: relative;
+    padding-top: 131px;
 }
 
 .banner {
@@ -18,11 +18,10 @@
 .main {
     width: 90%;
     max-width: 1320px;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     margin: auto;
     border-radius: 7px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-
 }
 
 .Home header {
@@ -46,8 +45,6 @@
     font-size: 28px;
     padding-block: 10px;
 }
-
-
 
 .bookList {
     display: flex;
